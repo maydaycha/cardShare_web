@@ -1,0 +1,16 @@
+<div>
+	{{shopNameLists}}
+	<select ng-model="shopName" ng-options="s.storeName for s in shopNameLists" ng-change="change()"></select>
+	{{shopName}}
+	<!-- <button ng-click="getCardNumber()">search</button> -->
+	<!-- {{lists}} -->
+	<table border="1">
+		<th>商店名稱</th><th>會員卡號</th><th>卡片持有人</th><th>到期日</th>
+		<tr ng-repeat="l in lists">
+			<td>{{l.storeName}}</td>
+			<td>{{l.cardNo}}</td>
+			<td>{{l.expireTime}}</td>
+		</tr>
+	</table>
+	<select ng-options="obj.value as obj.text for obj in array"></select>
+</div>
