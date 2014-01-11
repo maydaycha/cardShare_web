@@ -41,11 +41,11 @@ main {
 }
 .content .abox figure a:hover {
 	-moz-border-radius:19px;
--webkit-border-radius:19px;
-border-radius:19px;
--moz-box-shadow:0px 0px 11px #000000;
--webkit-box-shadow:0px 0px 11px #000000;
-box-shadow:0px 0px 11px #000000;
+	-webkit-border-radius:19px;
+	border-radius:19px;
+	-moz-box-shadow:0px 0px 11px #000000;
+	-webkit-box-shadow:0px 0px 11px #000000;
+	box-shadow:0px 0px 11px #000000;
 	opacity: 0.5;
 	-moz-transition: all 400ms linear 0s;
 	
@@ -168,7 +168,7 @@ footer {
 	clear: both;
 }
 #nav_social a:hover {
-opacity: 0.5;
+	opacity: 0.5;
 	-moz-transition: all 400ms linear 0s;
 }
 .big {
@@ -220,26 +220,26 @@ opacity: 0.5;
 	font: bold 120% Arial, Helvetica, Sans-Serif;
 	border-bottom: 2px solid #666;
 	color: #FFCC99;
-    text-shadow: 1px 1px 1px #000000;
+	text-shadow: 1px 1px 1px #000000;
 	background: inherit;
 }
 #footer a {
-color: #aaa;
-text-decoration: none;
+	color: #aaa;
+	text-decoration: none;
 }
 #footer a:hover {
 	color: #FF6600;
 	text-decoration: none;
 }
 #footer ul {
-list-style: none;
-margin: 0;
-padding: 0;
+	list-style: none;
+	margin: 0;
+	padding: 0;
 }
 #footer ul li {
-display: inline;
-padding: 0;
-margin: 0;
+	display: inline;
+	padding: 0;
+	margin: 0;
 }
 #footer ul li a {
 	display: block;
@@ -424,11 +424,11 @@ details {
 	text-decoration: none;
 }
 .sbtn {
-    border-radius: 3px 3px 3px 3px;
-    font-size: 11px !important;
-    font-weight: bold;
-    padding: 2px 5px 0;
-    text-transform: uppercase;
+	border-radius: 3px 3px 3px 3px;
+	font-size: 11px !important;
+	font-weight: bold;
+	padding: 2px 5px 0;
+	text-transform: uppercase;
 }
 .enter .btn a {
 	text-decoration: none;
@@ -443,7 +443,25 @@ details {
 	padding: 0px;
 }
 #logo a:hover {
--webkit-transform: rotate(-20deg);
+	-webkit-transform: rotate(-20deg);
 	-moz-transform: rotate(-20deg);
 	margin: 5px;
 }
+
+.cardTable{
+	min-width: 50%;
+	text-align: center;
+	border: 1px solid;
+	margin: 0px auto;
+}
+.cardTable tr{
+	border: 1px solid;	
+}
+.cardTable tr td{
+	border: 1px solid;	
+}
+/*table 間隔色*/
+tr:nth-child(even) {
+	background-color: #ffffff;
+}
+
