@@ -13,5 +13,6 @@ $db->query($query);
 $result = array();
 $i = 0;
 while($result[$i++] = $db->fetch_array());
+array_pop($result);
 echo json_encode($result);
 ?>

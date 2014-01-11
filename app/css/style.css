@@ -397,7 +397,7 @@ details {
 	margin-left: 10px;
 	text-shadow: -1px 1px 0 #fff;
 }
-.btn, input[type="submit"], button {
+.btn, input[type="submit"], button ,select{
 	background: none repeat scroll 0 0%, -moz-linear-gradient(#CCCCCC, #B3B3B3) repeat scroll 0 0 transparent;
 	border: 1px solid rgba(45, 45, 45, 0.5);
 	border-radius: 5px 5px 5px 5px;
@@ -465,3 +465,24 @@ tr:nth-child(even) {
 	background-color: #ffffff;
 }
 
+#map-canvas{
+	display: none;
+	min-width: 500px; 
+	min-height: 400px;
+	margin-top: 50px;
+}
+
+.storeImg{
+
+}
+.storeImg{
+	float: left;
+}
+
+.memberTable{
+	min-width: 50%;
+	min-height: 200px;
+	text-align: center;
+	border: 1px solid;
+	margin: 0px auto;
+}
