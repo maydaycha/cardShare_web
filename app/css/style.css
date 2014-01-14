@@ -469,6 +469,7 @@ tr:nth-child(even) {
 	display: none;
 	min-width: 800px; 
 	min-height: 400px;
+	height: 600px;
 	margin-top: 50px;
 }
 #map-canvas{
@@ -483,6 +484,8 @@ tr:nth-child(even) {
 	float: right;
 	overflow: auto;
 	width: 200px;
+	height: 500px;
+
 	/*min-height: 400px;*/
 }
 
