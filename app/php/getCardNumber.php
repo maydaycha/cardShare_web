@@ -7,7 +7,13 @@ $db->connect_db($_DB['host'], $_DB['username'], $_DB['password'], $_DB['dbname']
 
 $shopName = $_GET["shopNmae"];
 // $shopName = "EDWIN";
-$query ="SELECT * FROM card WHERE storeName = '".$shopName."' ";
+$sort = $_GET["sort"];
+
+if($sort)
+	$query ="SELECT * FROM card WHERE storeName = '".$shopName."' ORDER BY useCount";
+else
+	$query ="SELECT * FROM card WHERE storeName = '".$shopName."' ";
+
 $db->query($query);
 
 $result = array();

@@ -8,7 +8,7 @@ controller('MyCtrl1', ['$scope', '$http', function($scope, $http) {
 		$scope.shopName = $scope.shopNameLists[0];
 		console.log($scope.shopName);
 
-		$http.get('php/getCardNumber.php?shopNmae',{params: {shopNmae: $scope.shopName.storeName}}).success(function(data) {
+		$http.get('php/getCardNumber.php',{params: {shopNmae: $scope.shopName.storeName, sort: true}}).success(function(data) {
 			$scope.lists = data;
 		});
 	});
@@ -17,8 +17,18 @@ controller('MyCtrl1', ['$scope', '$http', function($scope, $http) {
 	createMap();
 
 	$scope.change = function(){
-		$http.get('php/getCardNumber.php?shopNmae',{params: {shopNmae: $scope.shopName.storeName}}).success(function(data) {
+		$http.get('php/getCardNumber.php',{params: {shopNmae: $scope.shopName.storeName, sort: true}}).success(function(data) {
 			$scope.lists = data;
+		});
+	}
+
+	$scope.displayCard = function(index, cardNo){
+		$("#card"+index).css('display','block');
+		$("#cardButton"+index).css('display','none');
+		alert(cardNo);
+		$http.get('php/updateUseCount.php', {params: {'cardNo': cardNo}}).success(function(data){
+			console.log(data);
+			console.log("update "+cardNo+" success");
 		});
 	}
 

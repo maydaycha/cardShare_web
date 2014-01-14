@@ -485,8 +485,6 @@ tr:nth-child(even) {
 	overflow: auto;
 	width: 200px;
 	height: 500px;
-
-	/*min-height: 400px;*/
 }
 
 .storeImg{
@@ -502,4 +500,21 @@ tr:nth-child(even) {
 	text-align: center;
 	border: 1px solid;
 	margin: 0px auto;
+}
+.cardCloum{
+	display: none;
+	/*border: 0px;*/
+}
+
+.nonesytle{
+	width: 60px;
+	height: 20px;
+	font-size: 15px;
+	text-align: center;
+	padding-bottom: 20px;
+	/*margin-right: 25px; */
+	/*margin: 0px auto;*/
+	position: relative;
+	right: 30px;
+
 }
