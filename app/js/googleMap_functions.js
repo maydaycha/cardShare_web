@@ -1,11 +1,14 @@
-var map;
-var lat_global, lng_global;
+var map, lat_global, lng_global, _lat, _lng;
 var markers = new Array();
+// var directionService = new google.maps.DirectionsService(); 
+var directionService;
+var directionDisplay;
+// var textSearch_result = new Array();
 function createMap(){
 	// var myLatlng = new google.maps.LatLng(24.789071,120.9996451);
 	// myLatlng = getCurrentPosition();
 	var mapOptions = {
-		zoom: 11,
+		zoom: 13,
 		mapTypeId: google.maps.MapTypeId.ROADMAP,
 		// center: latlng
 	};
@@ -26,8 +29,7 @@ function getCurrentPosition(){
 			lat_global = position.coords.latitude;
 			lng_global = position.coords.longitude;
 			// 基隆
-			// _lat = 25.128531;
-			// _lng = 121.751905;
+			// _lat = 25.128531, _lng = 121.751905;
 			var initialLocation = new google.maps.LatLng(_lat,_lng);
 			console.log('getCUrrrentPosition');
 			console.log("initial lat: " +_lat);
@@ -80,44 +82,67 @@ function getCurrentPosition(){
 		markers = [];
 	}
 
-	function text_search(keyword){
-		// var latlng = new google.maps.LatLng(24.789071,120.9996451);
-		console.log("text_search");
-		var latlng = new google.maps.LatLng(map.getCenter().lat(), map.getCenter().lng());
-		var request = {
-			location: latlng,
-			radius: '10000',
-			query: keyword
-		};
-
-		service = new google.maps.places.PlacesService(map);
-		service.textSearch(request, callback);
-
-		function callback(results, status) {
-			if (status == google.maps.places.PlacesServiceStatus.OK) {
-				console.log(results.length);
-				if(Object.size(markers)>0)
-					removeMarkers();
-				for (var i = 0; i < results.length; i++) {
-					var place = results[i];
-					console.log(results[i]);
-					addMarker(map, results[i],i);
+	/* 路徑規劃 */
+	function direction(pFrom, pEnd){
+		var oldDirections = [];
+		var currentDirections = null;
+		directionService = new google.maps.DirectionsService();
+		directionDisplay = new google.maps.DirectionsRenderer({
+			'map': map,
+			'preserveViewport': true,
+			'draggable': true
+		});
+		directionDisplay.setPanel(document.getElementById("directions_panel"));
+		google.maps.event.addListener(directionDisplay, 'directions_changed',
+			function() {
+				if (currentDirections) {
+					oldDirections.push(currentDirections);         
 				}
-			}
-		}
+				currentDirections = directionDisplay.getDirections();
+			});
+		calcRoute(directionService, directionDisplay, pFrom, pEnd);
 	}
 
-	function getLat(){
-		return lat_global;
+	/* 計算路徑 */
+	function calcRoute(directionService, directionDisplay ,pFrom, pEnd){
+		var start = pFrom;
+		var end = pEnd;
+		var request = {
+        origin:start,       //起始地
+        destination:end,    //目的地
+        travelMode: google.maps.DirectionsTravelMode.DRIVING //旅行工具 WALKING | DRIVING
+    };
+    directionService.route(request, function(response, status) {
+    	if (status == google.maps.DirectionsStatus.OK) {
+    		directionDisplay.setDirections(response);
+        //alert(directionDisplay.getDirections().routes[0].legs[0].start_address);//起點地點：330台灣桃園縣桃園市興華路23號
+        //alert(directionDisplay.getDirections().routes[0].legs[0].end_address);       //alert(directionDisplay.getDirections().routes[0].legs[0].distance.text);//24.8公里
+        //alert(directionDisplay.getDirections().routes[0].legs[0].duration.text);//31分鐘
+        //alert(directionDisplay.getDirections().routes[0].copyrights);//地圖資料 2011 Kingway
+        //alert(directionDisplay.getDirections().routes[0].legs[0].steps[0].instructions);//朝<b>西北</b>，走<b>興華路</b>，往<b>大智路</b>前進
+        //alert(directionDisplay.getDirections().routes[0].legs[0].steps[0].distance.text);//0.3公里
+    }
+});
+
+}
+
+/* get user loaction*/
+function getLat(){
+	return lat_global;
+}
+function getLng(){
+	return lng_global;
+}
+/* get user loaction*/
+
+// function getTextSearchResult(){
+// 	return textSearch_results;
+// }
+/* for calculate size of object*/
+Object.size = function(obj) {
+	var size = 0, key;
+	for (key in obj) {
+		if (obj.hasOwnProperty(key)) size++;
 	}
-	function getLng(){
-		return lng_global;
-	}
-	/* for calculate size of object*/
-	Object.size = function(obj) {
-		var size = 0, key;
-		for (key in obj) {
-			if (obj.hasOwnProperty(key)) size++;
-		}
-		return size;
-	};
+	return size;
+};

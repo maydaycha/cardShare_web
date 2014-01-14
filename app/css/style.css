@@ -465,11 +465,25 @@ tr:nth-child(even) {
 	background-color: #ffffff;
 }
 
-#map-canvas{
+#map_container{
 	display: none;
-	min-width: 500px; 
+	min-width: 800px; 
 	min-height: 400px;
 	margin-top: 50px;
+}
+#map-canvas{
+	/*display: none;*/
+	/*min-width: 500px; */
+	width: 750px;
+	min-height: 400px;
+	/*margin-top: 50px;*/
+	float: left
+}
+#directions_panel{
+	float: right;
+	overflow: auto;
+	width: 200px;
+	/*min-height: 400px;*/
 }
 
 .storeImg{
