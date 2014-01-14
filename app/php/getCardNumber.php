@@ -10,7 +10,7 @@ $shopName = $_GET["shopNmae"];
 $sort = $_GET["sort"];
 
 if($sort)
-	$query ="SELECT * FROM card WHERE storeName = '".$shopName."' ORDER BY useCount";
+	$query ="SELECT * FROM card WHERE storeName = '".$shopName."' ORDER BY useCount DESC";
 else
 	$query ="SELECT * FROM card WHERE storeName = '".$shopName."' ";
 
@@ -20,5 +20,6 @@ $result = array();
 $i = 0;
 while($result[$i++] = $db->fetch_array());
 array_pop($result);
+
 echo json_encode($result);
 ?>
