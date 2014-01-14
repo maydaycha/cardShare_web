@@ -8,7 +8,7 @@ function createMap(){
 	// var myLatlng = new google.maps.LatLng(24.789071,120.9996451);
 	// myLatlng = getCurrentPosition();
 	var mapOptions = {
-		zoom: 13,
+		zoom: 12,
 		mapTypeId: google.maps.MapTypeId.ROADMAP,
 		// center: latlng
 	};

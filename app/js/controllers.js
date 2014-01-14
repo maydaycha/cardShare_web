@@ -99,7 +99,7 @@ controller('MyCtrl1', ['$scope', '$http', function($scope, $http) {
 	// })
 
 $scope.getDirection = function(destAddr){
-	$http.get('http://maps.googleapis.com/maps/api/geocode/json?latlng='+getLat()+','+getLng()+'&sensor=false&language=zh-tw')
+	$http.get('http://maps.googleapis.com/maps/api/geocode/json?latlng='+getLat()+','+getLng()+'&sensor=true&language=zh-tw')
 	.success(function(data){
 		console.log("get Address");
 		var userAddress = data.results[0].formatted_address;
