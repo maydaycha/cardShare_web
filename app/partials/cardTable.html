@@ -8,7 +8,9 @@
 		<tr ng-repeat="l in lists">
 			<td>{{l.storeName}}</td>
 			<td id="card{{$index}}" class="cardCloum">{{l.cardNo}}</td>
-			<td id="cardButton{{$index}}" class="showCardCloum" ng-click="displayCard($index,l.cardNo)"><button class="nonesytle">display</button></td>	
+			<td id="cardButtonTD{{$index}}">
+				<button id="cardButton{{$index}}" class="showCardCloum" ng-click="displayCard($index,l.cardNo)" >display</button>
+			</td>	
 			<td>{{l.owner}}</td>
 			<td>{{l.expireTime}}</td>
 		</tr>

@@ -10,9 +10,9 @@ controller('MyCtrl1', ['$scope', '$http', function($scope, $http) {
 
 		$http.get('php/getCardNumber.php',{params: {shopNmae: $scope.shopName.storeName, sort: true}}).success(function(data) {
 			$scope.lists = data;
+			$scope.lists_tmp = data;
 		});
 	});
-
 	/* create a map and detect user location */
 	createMap();
 
@@ -24,11 +24,18 @@ controller('MyCtrl1', ['$scope', '$http', function($scope, $http) {
 
 	$scope.displayCard = function(index, cardNo){
 		$("#card"+index).css('display','block');
-		$("#cardButton"+index).css('display','none');
-		alert(cardNo);
+		$("#cardButtonTD"+index).css('display','none');
+		console.log($scope.lists_tmp.length);
+		for(var i =0; i < $scope.lists_tmp.length; i++){
+			if(i != index){
+				// alert("#cardButton"+i+"change");
+				$("#cardButton"+i).attr("disabled", true);
+			}
+		}
 		$http.get('php/updateUseCount.php', {params: {'cardNo': cardNo}}).success(function(data){
 			console.log(data);
 			console.log("update "+cardNo+" success");
+			alert(cardNo);
 		});
 	}
 
