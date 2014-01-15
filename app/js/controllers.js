@@ -34,7 +34,7 @@ controller('MyCtrl1', ['$scope', '$http', '$window', function($scope, $http, $wi
 		$("#card"+index).css('display','block');
 		$("#cardButtonTD"+index).css('display','none');
 		console.log($scope.lists.length);
-		for(var i =0; i < $scope.lists_tmp.length; i++){
+		for(var i =0; i < $scope.lists.length; i++){
 			if(i != index){
 				$("#cardButton"+i).attr("disabled", true);
 			}
