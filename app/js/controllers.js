@@ -10,7 +10,6 @@ controller('MyCtrl1', ['$scope', '$http', function($scope, $http) {
 
 		$http.get('php/getCardNumber.php',{params: {shopNmae: $scope.shopName.storeName, sort: true}}).success(function(data) {
 			$scope.lists = data;
-			$scope.lists_tmp = data;
 		});
 	});
 	/* create a map and detect user location */
@@ -25,10 +24,9 @@ controller('MyCtrl1', ['$scope', '$http', function($scope, $http) {
 	$scope.displayCard = function(index, cardNo){
 		$("#card"+index).css('display','block');
 		$("#cardButtonTD"+index).css('display','none');
-		console.log($scope.lists_tmp.length);
+		console.log($scope.lists.length);
 		for(var i =0; i < $scope.lists_tmp.length; i++){
 			if(i != index){
-				// alert("#cardButton"+i+"change");
 				$("#cardButton"+i).attr("disabled", true);
 			}
 		}
@@ -44,9 +42,6 @@ controller('MyCtrl1', ['$scope', '$http', function($scope, $http) {
 		var lng = getLng();
 		console.log("~~"+lat);
 		console.log("~~"+lng);
-		// console.log(map);
-		// removeMarkers();
-		// text_search($scope.shopName.storeName);
 		$scope.text_search($scope.shopName.storeName);
 		$("#map_container").css("display","block");
 		// 防止從隱藏回來 size 不對
