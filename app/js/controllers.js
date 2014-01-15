@@ -2,7 +2,16 @@
 /* Controllers */
 
 angular.module('myApp.controllers', []).
-controller('MyCtrl1', ['$scope', '$http', function($scope, $http) {
+controller('MyCtrl1', ['$scope', '$http', '$window', function($scope, $http, $window) {
+
+	$http.get('php/authentication.php', {params: {check: "check"}}).success(function(data){
+		$scope.checkResults = data;
+		console.log($scope.checkResults["status"]);
+		if($scope.checkResults["status"]=="denied"){
+			$window.location.href="./login.html";
+		}
+	})
+
 	$http.get('php/getAllShop.php').success(function(data) {
 		$scope.shopNameLists = data;
 		$scope.shopName = $scope.shopNameLists[0];

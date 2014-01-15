@@ -518,3 +518,7 @@ tr:nth-child(even) {
 	right: 30px;
 
 }
+.logout_button{
+	position: absolute;
+	right: 0px;
+}

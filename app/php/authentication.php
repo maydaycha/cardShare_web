@@ -4,13 +4,26 @@ require_once("DB_config.php");
 require_once("DB_class.php");
 header("Content-Type:text/html; charset=utf-8");
 
-$acc = $_POST["account"];
-$pass = $_POST["password"];
-
+@$acc = $_POST["account"];
+@$pass = $_POST["password"];
+@$check = $_GET["check"];
 // $acc = 'nctuIIM';
 // $pass = 'nctu123';
+// $check = "check";
 $auth = false;
-
+if(isset($check)){
+	if(isset($_SESSION["account"])){
+		$response["status"] = "permit";
+		echo json_encode($response);
+		return;
+	}
+	else{
+		$response["status"] = "permit";
+		$response["status"] = "denied";
+		echo json_encode($response);
+		return;
+	}
+}
 
 if(!isset($acc) || !isset($pass))
 	$auth = false;
