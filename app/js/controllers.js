@@ -88,7 +88,7 @@ controller('MyCtrl1', ['$scope', '$http', '$window', function($scope, $http, $wi
 						var place = results[i];
 						console.log(results[i]);
 						$scope.textSearch_results.push(results[i]);
-						var obj = {"lat":results[i].geometry.location.b, "lng":results[i].geometry.location.d};
+						var obj = {"lat":results[i].geometry.location.d, "lng":results[i].geometry.location.e};
 						latlngObject_array.push(obj);
 						addMarker(map, results[i],i);
 					}
@@ -97,6 +97,7 @@ controller('MyCtrl1', ['$scope', '$http', '$window', function($scope, $http, $wi
 				console.log(latlngObject_array);
 				var getIndex = $scope.findMiniDistStore(latlngObject_array);
 				console.log(getIndex);
+				console.log(results[getIndex]);
 				$scope.getDirection(results[getIndex].formatted_address);	
 			}
 		}
@@ -113,6 +114,7 @@ controller('MyCtrl1', ['$scope', '$http', '$window', function($scope, $http, $wi
 				minimum_index = i
 			}
 		}
+		alert(minimum_index);
 		return minimum_index;
 	}
 	// $scope.$watch('textSearch_results', function(){
