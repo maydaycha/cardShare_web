@@ -25,7 +25,7 @@ if(isset($check)){
 	}
 }
 
-if(!isset($acc) || !isset($pass))
+if(($acc=="") || ($pass==""))
 	$auth = false;
 else{
 	$db = new DB();
