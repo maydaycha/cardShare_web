@@ -2,7 +2,7 @@
 <!--[if lt IE 7]> <html class="lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
 <!--[if IE 7]> <html class="lt-ie9 lt-ie8" lang="en"> <![endif]-->
 <!--[if IE 8]> <html class="lt-ie9" lang="en"> <![endif]-->
-<!--[if gt IE 8]><!--> <html lang="en"> <!--<![endif]-->
+<!--[if gt IE 8]><!--> <html> <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -10,8 +10,8 @@
   <link rel="stylesheet" href="css/login.css">
   <!--[if lt IE 9]><script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 </head>
-<body>
-  <form method="post" action="php/authentication.php" class="login">
+<body ng-app="myApp" ng-controller="signUpController">
+  <form id="login_form" method="post" action="php/authentication.php" class="login">
     <p>
       <label>Account:</label>
       <input type="text" name="account" id="login" value="">
@@ -27,6 +27,58 @@
     </p>
 
     <p class="forgot-password"><a href="index.html">Forgot your password?</a></p>
+    <p class="forgot-password"><a href="" ng-click="showSignUpFrom()">Sign Up</a></p>
   </form>
+  <form id="signUp_form"class="login" >
+    <p>
+      <label>Account: </label>
+      <input type="text" ng-model="account" id="">
+    </p>  
+    <p>
+      <label>Password: </label>
+      <input type="text" ng-model="password" name="" id="">
+    </p>
+    <p>
+      <label>UserName: </label>
+      <input type="text" ng-model="username" name="" id="">
+    </p>
+    <p>
+      <label>Sexual: </label>
+      <input type="text" ng-model="sexual" name="" id="">
+    </p>
+    <p>
+      <label>Birthday: </label>
+      <input type="text" ng-model="birthday" name="" id="" placeholder="ex: 2001/01/01">
+    </p>
+    <p>
+      <label>Height: </label>
+      <input type="text" ng-model="height" name="" id="">
+    </p>
+    <p>
+      <label>Weight: </label>
+      <input type="text" ng-model="weight" name="" id="">
+    </p>
+    <p>
+      <label>MobileNum: </label>
+      <input type="text" ng-model="mobilenum" name="" id="">
+    </p>
+    <p>
+      <label>E-mail: </label>
+      <input type="text" ng-model="email" name="" id="">
+    </p>
+    <p>
+      <label>Address: </label>
+      <input type="text" ng-model="address" name="" id="">
+    </p>
+    <button class="signUp_button" ng-click="signUp()">Submit</button>
+  </form>
+  <script src="lib/angular/angular.js"></script>
+  <script src="lib/angular/angular-route.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/services.js"></script>
+  <script src="js/controllers.js"></script>
+  <script src="js/filters.js"></script>
+  <script src="js/directives.js"></script>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
 </body>
 </html>

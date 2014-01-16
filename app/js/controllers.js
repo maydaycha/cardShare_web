@@ -145,11 +145,60 @@ $scope.getDirection = function(destAddr){
 }])
 .controller('MyCtrl3', ["$scope", "$http", function($scope, $http) {
 	$http.get('php/getAccountInfo.php').success(function(data) {
+		console.log(data);
 		$scope.list = data[0];
 		// $scope.shopName = $scope.shopNameLists[0];
-		console.log($scope.lists);
+		// console.log($scope.lists);
 	});
 
+	$http.get('php/getUserCard.php').success(function(data){
+		$scope.cardLists = data;
+		console.log(data);
+	});
+
+}])
+.controller('signUpController', ["$scope", "$http", function($scope, $http) {
+
+	$scope.showSignUpFrom = function(){
+		$("#login_form").css('display', 'none');
+		$("#signUp_form").css('display', 'block');
+	}
+
+	$scope.signUp = function(){
+		var dataJson = {
+			'account': $scope.account, 
+			'password':$scope.password,
+			'username':$scope.username,
+			'sexual': $scope.sexual,
+			'height': $scope.height,
+			'weight': $scope.weight,
+			'birthday': $scope.birthday,
+			'mobilenum': $scope.mobilenum,
+			'email': $scope.email,
+			'address': $scope.address
+		}
+		console.log(dataJson);
+		$http({
+			method: "POST",
+			url: './php/signUp.php',
+			data: $.param(dataJson),
+			headers: {'Content-type': 'application/x-www-form-urlencoded'}
+		})
+		.success(function(data){
+			console.log(data);
+			if(data == "MySQL Query Error"){
+				alert("Acconut is duplicate");
+			}
+			else{
+				alert("sign up success! please login ");
+				$("#login_form").css('display', 'block');
+				$("#signUp_form").css('display', 'none');
+			}
+		})
+		.error(function(data){
+			console.log("error");
+		});
+	}
 }]);
 
 

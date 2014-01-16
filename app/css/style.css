@@ -501,6 +501,13 @@ tr:nth-child(even) {
 	border: 1px solid;
 	margin: 0px auto;
 }
+.memberTable2{
+	min-width: 50%;
+	min-height: 200px;
+	text-align: center;
+	border: 1px solid;
+	margin: 50px auto;
+}
 .cardCloum{
 	display: none;
 	/*border: 0px;*/

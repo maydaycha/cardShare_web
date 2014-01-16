@@ -6,7 +6,7 @@ header("Content-Type:text/html; charset=utf-8");
 $db = new DB();
 $db->connect_db($_DB['host'], $_DB['username'], $_DB['password'], $_DB['dbname']);
 
-$query ="SELECT * FROM member WHERE account='".$_SESSION["account"]."' ";
+$query ="SELECT * FROM card WHERE ownType='".$_SESSION["account"]."' ";
 $db->query($query);
 
 $result = array();

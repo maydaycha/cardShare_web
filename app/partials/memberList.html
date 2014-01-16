@@ -10,4 +10,11 @@
 		<tr><td>eMail</td><td>{{list.eMailist}}</td>	</tr>
 		<tr><td>Address</td><td>{{list.address}}</td>	</tr>
 	</table>
+	<table class="memberTable2">
+		<tr><td>storeName</td><td>cardNo</td></tr>
+		<tr ng-repeat="c in cardLists">
+			<td>{{c.storeName}}</td>
+			<td>{{c.cardNo}}</td>
+		</tr>
+	</table>
 </div>
