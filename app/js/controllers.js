@@ -165,7 +165,7 @@ $scope.getDirection = function(destAddr){
 		// $("#cardList").css('display', 'none');
 		$("#addCardTable").css('display', 'block');
 	}
-	
+
 	$scope.save = function(){
 		var dataJson = {
 			'storeName': $scope.storeName,
@@ -187,8 +187,7 @@ $scope.getDirection = function(destAddr){
 				alert("Acconut is duplicate");
 			}
 			else{
-				alert("sign up success! please login ");
-				// $("#cardList").css('display', 'block');
+				alert("add card successful");
 				$("#addCardTable").css('display', 'none');
 			}
 		})
