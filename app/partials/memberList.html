@@ -1,5 +1,6 @@
 <div >
 	<table class="memberTable">
+	<th colspan="2" style="text-align:center;">User information</th>
 		<tr><td>Name</td><td>{{list.name}}</td></tr>
 		<tr><td>Acount</td><td>{{list.account}}</td></tr>
 		<tr><td>Sexual</td><td ng-if="list.sexualist">male</td><td ng-if!="list.sexualist">female</td></tr>
@@ -10,7 +11,9 @@
 		<tr><td>eMail</td><td>{{list.eMailist}}</td>	</tr>
 		<tr><td>Address</td><td>{{list.address}}</td>	</tr>
 	</table>
+
 	<table class="memberTable2">
+		<th colspan="2" style="text-align:center;">card information</th>
 		<tr><td>storeName</td><td>cardNo</td></tr>
 		<tr ng-repeat="c in cardLists">
 			<td>{{c.storeName}}</td>
