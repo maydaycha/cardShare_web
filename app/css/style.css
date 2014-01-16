@@ -508,6 +508,16 @@ tr:nth-child(even) {
 	border: 1px solid;
 	margin: 50px auto;
 }
+.memberTable3{
+	position: relative;
+	right: 10px;
+	/*min-width: 50%;*/
+	width: 270px;
+	min-height: 200px;
+	text-align: center;
+	/*border: 1px solid;*/
+	margin: 50px auto;
+}
 .cardCloum{
 	display: none;
 	/*border: 0px;*/
@@ -528,4 +538,8 @@ tr:nth-child(even) {
 .logout_button{
 	position: absolute;
 	right: 0px;
+}
+
+#addCardTable{
+	display: none;
 }

@@ -1,6 +1,6 @@
 <div >
 	<table class="memberTable">
-	<th colspan="2" style="text-align:center;">User information</th>
+		<th colspan="2" style="text-align:center;">User information</th>
 		<tr><td>Name</td><td>{{list.name}}</td></tr>
 		<tr><td>Acount</td><td>{{list.account}}</td></tr>
 		<tr><td>Sexual</td><td ng-if="list.sexualist">male</td><td ng-if!="list.sexualist">female</td></tr>
@@ -12,12 +12,25 @@
 		<tr><td>Address</td><td>{{list.address}}</td>	</tr>
 	</table>
 
-	<table class="memberTable2">
+	<table id="cardList" class="memberTable2">
 		<th colspan="2" style="text-align:center;">card information</th>
 		<tr><td>storeName</td><td>cardNo</td></tr>
 		<tr ng-repeat="c in cardLists">
 			<td>{{c.storeName}}</td>
 			<td>{{c.cardNo}}</td>
 		</tr>
+		<th  colspan="2" style="position:relative; right:35%;" ng-click="addCard()"><button>Add card</button></th>
 	</table>
+
+	<table id="addCardTable" class="memberTable3">
+		<th colspan="2" style="text-align:center;">Add Card</th>
+		<tr><td>StoreName: </td><td><input type="text" ng-model="storeName"></td></tr>
+		<tr><td>CardNo: </td><td><input type="text" ng-model="cardNo"></td></tr>
+		<tr><td>ownType: </td><td><input type="text" ng-model="ownType"></td></tr>
+		<tr><td>owner: </td><td><input type="text" ng-model="owner"></td></tr>
+		<tr><td>cardPhone: </td><td><input type="text" ng-model="cardPhone"></td></tr>
+		<tr><td>expireTime: </td><td><input type="text" ng-model="expireTime"></td></tr>
+		<th  colspan="2" style="position:relative; right:35%;" ng-click="save()"><button>Save</button></th>
+	</table>
+
 </div>

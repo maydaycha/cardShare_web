@@ -149,6 +149,9 @@ $scope.getDirection = function(destAddr){
 	$http.get('php/getAccountInfo.php').success(function(data) {
 		console.log(data);
 		$scope.list = data[0];
+		$scope.ownType = data[0].account;
+		$scope.owner= data[0].name;
+		$scope.cardPhone= data[0].mobileNum;
 		// $scope.shopName = $scope.shopNameLists[0];
 		// console.log($scope.lists);
 	});
@@ -157,6 +160,42 @@ $scope.getDirection = function(destAddr){
 		$scope.cardLists = data;
 		console.log(data);
 	});
+
+	$scope.addCard = function(){
+		// $("#cardList").css('display', 'none');
+		$("#addCardTable").css('display', 'block');
+	}
+	
+	$scope.save = function(){
+		var dataJson = {
+			'storeName': $scope.storeName,
+			'cardNo': $scope.cardNo,
+			'ownType': $scope.ownType,
+			'owner': $scope.owner,
+			'cardPhone': $scope.cardPhone,
+			'expireTime': $scope.expireTime
+		};
+		$http({
+			method: "POST",
+			url: './php/addCard.php',
+			data: $.param(dataJson),
+			headers: {'Content-type': 'application/x-www-form-urlencoded'}
+		})
+		.success(function(data){
+			console.log(data);
+			if(data == "MySQL Query Error"){
+				alert("Acconut is duplicate");
+			}
+			else{
+				alert("sign up success! please login ");
+				// $("#cardList").css('display', 'block');
+				$("#addCardTable").css('display', 'none');
+			}
+		})
+		.error(function(data){
+			console.log("error");
+		});
+	}
 
 }])
 .controller('signUpController', ["$scope", "$http", function($scope, $http) {
