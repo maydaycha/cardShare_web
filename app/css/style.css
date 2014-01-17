@@ -543,3 +543,14 @@ tr:nth-child(even) {
 #addCardTable{
 	display: none;
 }
+
+.control_card_button{
+	position:relative; 
+	right:45px;
+}
+.display_td{
+	/*display: none;*/
+}
+#hide_td{
+
+}

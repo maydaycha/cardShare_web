@@ -6,13 +6,12 @@ $db = new DB();
 $db->connect_db($_DB['host'], $_DB['username'], $_DB['password'], $_DB['dbname']);
 
 $shopName = $_GET["shopNmae"];
-// $shopName = "EDWIN";
 $sort = $_GET["sort"];
 
 if($sort)
-	$query ="SELECT * FROM card WHERE storeName = '".$shopName."' ORDER BY useCount DESC";
+	$query ="SELECT * FROM card WHERE storeName = '".$shopName."' AND showType=1 ORDER BY useCount DESC";
 else
-	$query ="SELECT * FROM card WHERE storeName = '".$shopName."' ";
+	$query ="SELECT * FROM card WHERE storeName = '".$shopName."'  AND showType=1 ";
 
 $db->query($query);
 

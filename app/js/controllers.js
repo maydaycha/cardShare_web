@@ -196,6 +196,33 @@ $scope.getDirection = function(destAddr){
 		});
 	}
 
+	$scope.display_card = function(index){
+		var dataJson = {
+			"storeName": $scope.cardLists[index].storeName,
+			"cardNo": $scope.cardLists[index].cardNo,
+			"showType": 1
+		};
+		console.log(dataJson);
+		$http.get('php/cardStatusChange.php',{params:dataJson}).success(function(data){
+			console.log(data);
+			window.location.reload();
+		})
+	}
+
+	$scope.hide_card = function(index){
+		var dataJson = {
+			"storeName": $scope.cardLists[index].storeName,
+			"cardNo": $scope.cardLists[index].cardNo,
+			"showType": 0
+		};
+		console.log(dataJson);
+		$http.get('php/cardStatusChange.php',{params:dataJson}).success(function(data){
+			console.log(data);
+			window.location.reload();
+		})
+	}
+	
+
 }])
 .controller('signUpController', ["$scope", "$http", function($scope, $http) {
 
